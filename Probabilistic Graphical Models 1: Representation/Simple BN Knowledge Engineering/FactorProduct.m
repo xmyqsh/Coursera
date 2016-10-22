@@ -29,8 +29,8 @@ C.var = union(A.var, B.var);
 % In the code below, we have that
 %
 %   mapA(i) = j, if and only if, A.var(i) == C.var(j)
-% 
-% and similarly 
+%
+% and similarly
 %
 %   mapB(i) = j, if and only if, B.var(i) == C.var(j)
 %
@@ -61,7 +61,9 @@ indxB = AssignmentToIndex(assignments(:, mapB), B.card);
 % YOUR CODE HERE:
 % Correctly populate the factor values of C
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+for idx = 1 : prod(C.card)
+  C.val(idx) += A.val(indxA(idx)) * B.val(indxB(idx));
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end

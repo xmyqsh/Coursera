@@ -73,7 +73,7 @@ function out = output(partIdx)
   if partIdx == 1
     [F, names, assignments] = ConvertNetwork('Credit_net.net');
     [F, names, assignments] = RelabelVars(F, names, assignments);
-    if (ValidateNetwork(F, names, assignments))      
+    if (ValidateNetwork(F, names, assignments))
       out = SerializeFactorsFg(F);
     else
       out = '';
@@ -108,7 +108,7 @@ function out = output(partIdx)
   elseif partIdx == 11
     cm = [ComputeMarginal(PART6.INPUT1{:}), ComputeMarginal(PART6.INPUT2{:}), ComputeMarginal(PART6.INPUT3{:}), ComputeMarginal(PART6.INPUT4{:})];
     out = SerializeFactorsFg(cm);
-  end 
+  end
 end
 
 function ok = ValidateNetwork(F, names, assignments)
@@ -119,7 +119,7 @@ function ok = ValidateNetwork(F, names, assignments)
   % If this happens, it's most likely a malformed .net file, or else it is
   % a bug in ConvertNetwork.m
   assert(numel(F) == 8, sprintf('Error: your network should have 8 CPDs but it only has %d.', numel(F)));   
-  
+
   % Check that the assignment of variables is the same as in the original
   valNames = cell(8, 1);
   valNames{1} = {'Low','High'};
@@ -130,12 +130,12 @@ function ok = ValidateNetwork(F, names, assignments)
   valNames{6} = {'Promising','Not_promising'};
   valNames{7} = {'Reliable','Unreliable'};
   valNames{8} = {'Between16and21','Between22and64','Over65'};
-  
-  for i = 1:numel(valNames)    
+
+  for i = 1:numel(valNames)
     assert(all(strcmp(valNames{i}, assignments{i})), ...
       sprintf('Error: variable values/value ordering for variable %s does not match the original. Did you change the order/name of some variable values?', names{i}));
   end
-  
+
   ok = true;
 end
 
@@ -162,10 +162,10 @@ function [newF, newNames, newAssignments] = RelabelVars(F, names, assignments)
       origToNew(i) = result;
     end
   end
-  
+
   newNames = names(origToNew(:));
   newAssignments = assignments(origToNew(:));
-  
+
   % relabel the vars
   newF = F;
   for i = 1:numel(F)
@@ -188,16 +188,16 @@ lineIdx = 2;
 for i = 1:numel(F)
   lines{lineIdx} = sprintf('\n%d\n', numel(F(i).var));
   lineIdx = lineIdx + 1;
-  
+
   lines{lineIdx} = sprintf('%s\n', num2str(F(i).var(:)')); % ensure that we put in a row vector
   lineIdx = lineIdx + 1;
-  
+
   lines{lineIdx} = sprintf('%s\n', num2str(F(i).card(:)')); % ensure that we put in a row vector
   lineIdx = lineIdx + 1;
-  
+
   lines{lineIdx} = sprintf('%d\n', numel(F(i).val));
   lineIdx = lineIdx + 1;
-  
+
   % Internal storage of factor vals is already in the same indexing order
   % as what libDAI expects, so we don't need to convert the indices.
   vals = [0:(numel(F(i).val) - 1); F(i).val(:)'];

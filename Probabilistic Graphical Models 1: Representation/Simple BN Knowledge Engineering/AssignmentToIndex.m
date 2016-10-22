@@ -1,7 +1,7 @@
 % AssignmentToIndex Convert assignment to index.
 %
 %   I = AssignmentToIndex(A, D) converts an assignment, A, over variables
-%   with cardinality D to an index into the .val vector for a factor. 
+%   with cardinality D to an index into the .val vector for a factor.
 %   If A is a matrix then the function converts each row of A to an index.
 %
 %   See also IndexToAssignment.m and FactorTutorial.m
