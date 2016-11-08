@@ -1,0 +1,53 @@
+# Sample output for one epoch of training with default settings when all missing
+# code is correctly filled in.
+# NOTE: The exact output you see may be different from this because of
+# different random initializations. This is only meant to give a general sense
+# of what to expect.
+octave-3.4.0:1> model = train(1);
+Epoch 1
+Batch 100 Train CE 4.602
+Batch 200 Train CE 4.498
+Batch 300 Train CE 4.467
+Batch 400 Train CE 4.476
+Batch 500 Train CE 4.448
+Batch 600 Train CE 4.493
+Batch 700 Train CE 4.459
+Batch 800 Train CE 4.421
+Batch 900 Train CE 4.466
+Batch 1000 Train CE 4.437
+Running validation ... Validation CE 4.430
+Batch 1100 Train CE 4.355
+Batch 1200 Train CE 4.297
+Batch 1300 Train CE 4.224
+Batch 1400 Train CE 4.167
+Batch 1500 Train CE 4.111
+Batch 1600 Train CE 4.078
+Batch 1700 Train CE 4.048
+Batch 1800 Train CE 4.030
+Batch 1900 Train CE 3.994
+Batch 2000 Train CE 3.934
+Running validation ... Validation CE 3.964
+Batch 2100 Train CE 3.936
+Batch 2200 Train CE 3.884
+Batch 2300 Train CE 3.833
+Batch 2400 Train CE 3.767
+Batch 2500 Train CE 3.719
+Batch 2600 Train CE 3.708
+Batch 2700 Train CE 3.661
+Batch 2800 Train CE 3.597
+Batch 2900 Train CE 3.565
+Batch 3000 Train CE 3.493
+Running validation ... Validation CE 3.496
+Batch 3100 Train CE 3.461
+Batch 3200 Train CE 3.458
+Batch 3300 Train CE 3.392
+Batch 3400 Train CE 3.407
+Batch 3500 Train CE 3.360
+Batch 3600 Train CE 3.372
+Batch 3700 Train CE 3.285
+Average Training CE 3.966
+Finished Training.
+Final Training CE 3.966
+Final Validation CE 3.310
+Final Test CE 3.310
+Training took 50.94 seconds
