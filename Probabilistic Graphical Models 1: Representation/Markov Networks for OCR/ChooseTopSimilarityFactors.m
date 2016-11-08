@@ -23,7 +23,19 @@ if (length(allFactors) <= F)
 end
 
 % Your code here:
-factors = allFactors; %%% REMOVE THIS LINE
+
+factors = repmat(struct('var', [], 'card', [], 'val', []), F, 1);
+
+nFactor = length(allFactors);
+vals = ones(nFactor, 1);
+for i = 1 : nFactor
+  vals(i) = allFactors(i).val(1);
+end
+
+[s, ind] = sort(vals, 'descend');
+for i = 1 : F
+  factors(i) = allFactors(ind(i));
+end
 
 end
 

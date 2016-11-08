@@ -20,4 +20,12 @@ factors = repmat(struct('var', [], 'card', [], 'val', []), n - 1, 1);
 
 % Your code here:
 
+val = ones(K * K, 1);
+
+for i = 1 : n - 1
+  factors(i).var = [i, i + 1];
+  factors(i).card = [K, K];
+  factors(i).val = val;
+end
+
 end
