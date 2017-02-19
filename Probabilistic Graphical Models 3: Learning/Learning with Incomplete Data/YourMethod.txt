@@ -1,0 +1,7 @@
+Describe your method used to recognize the unknown actions here.
+
+Reinitializing the probabilities and clustering the poses together using
+EM_Cluster.
+then run 
+[predicted_labels] = RecognizeUnknownActions(datasetTrain3,
+datasetTest3, G, 5);
