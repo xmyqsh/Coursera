@@ -59,7 +59,7 @@ for iter=1:maxIter
   % YOUR CODE HERE
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   for i = 1 : L
-    P.c += ClassProb(actionData(i).marg_ind(1)); % P.c is the initial state probability P(S1)
+    P.c += ClassProb(actionData(i).marg_ind(1), :); % P.c is the initial state probability P(S1)
   end
   P.c /= L;
 
