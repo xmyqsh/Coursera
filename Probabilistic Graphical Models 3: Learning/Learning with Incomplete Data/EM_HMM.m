@@ -172,7 +172,7 @@ for iter=1:maxIter
       trans = PCalibrated.cliqueList(j).val;
       PairProb(actionData(i).pair_ind(j), :) = trans - logsumexp(trans);
     end
-    loglikelihood(iter) = logsumexp(PCalibrated.cliqueList(1).val); % summation on any clique is OK
+    loglikelihood(iter) += logsumexp(PCalibrated.cliqueList(1).val); % summation on any clique is OK
   end
   ClassProb = exp(ClassProb); PairProb = exp(PairProb);
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
