@@ -1,7 +1,20 @@
 Describe your method used to recognize the unknown actions here.
 
-Reinitializing the probabilities and clustering the poses together using
-EM_Cluster.
-then run 
-[predicted_labels] = RecognizeUnknownActions(datasetTrain3,
-datasetTest3, G, 5);
+My RecognizeUnknownActions implementation:
+first, reinitializing the probabilities
+second, clustering the poses together using EM_Cluster
+last, run RecognizeActions
+
+For training:
+seek proper InitialClassProb on datasetTrain1 and save it
+then use the proper InitialClassProb to inference on datasetTrain3
+
+As a result, all of the 3rd class example has been predicted as 2nd
+class. So it just got 66.667% on the unknown testset(total test cases is
+90, all of the 30 3rd class cases has not been correctly predicted).
+Case EM is an unsurpurvised process, I have no good idea to improve
+this speciel mistake.
+
+Also, we can enrich the datasets by adding noise
+Case the learning process is too slow
+I don't want try it...

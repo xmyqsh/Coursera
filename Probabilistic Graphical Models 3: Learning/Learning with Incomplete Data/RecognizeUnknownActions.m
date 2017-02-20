@@ -22,10 +22,12 @@ function [predicted_labels] = RecognizeUnknownActions(datasetTrain, datasetTest,
 % YOUR CODE HERE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 dim = [size(datasetTrain(1).poseData, 1), size(datasetTrain(2).poseData, 1), size(datasetTrain(3).poseData, 1)];
-InitialClassProb4 = rand(sum(dim), 3);
-InitialClassProb4 = InitialClassProb4 ./ repmat(sum(InitialClassProb4, 2), 1, 3);
+%InitialClassProb = rand(sum(dim), 3);
+%InitialClassProb = InitialClassProb ./ repmat(sum(InitialClassProb, 2), 1, 3);
+%save('InitialClassProb.mat', 'InitialClassProb');
+load('InitialClassProb.mat')
 %[PCluster loglikelihoodCluster ClassProbCluster] = EM_cluster(vertcat(datasetTrain(1).poseData, datasetTrain(2).poseData, datasetTrain(3).poseData), G, vertcat(datasetTrain(1).InitialClassProb, datasetTrain(2).InitialClassProb, datasetTrain(3).InitialClassProb), maxIter);
-[PCluster loglikelihoodCluster ClassProbCluster] = EM_cluster(vertcat(datasetTrain(1).poseData, datasetTrain(2).poseData, datasetTrain(3).poseData), G, InitialClassProb4, maxIter);
+[PCluster loglikelihoodCluster ClassProbCluster] = EM_cluster(vertcat(datasetTrain(1).poseData, datasetTrain(2).poseData, datasetTrain(3).poseData), G, InitialClassProb, maxIter);
 %[P1Cluster loglikelihood1Cluster ClassProb1Cluster] = EM_cluster(datasetTrain(1).poseData, G, datasetTrain(1).InitialClassProb, maxIter);
 %[P1 loglikelihood1 ClassProb1 PairProb1] = EM_HMM(datasetTrain(1).actionData, datasetTrain(1).poseData, G, datasetTrain(1).InitialClassProb, datasetTrain(1).InitialPairProb, maxIter);
 %[P1 loglikelihood1 ClassProb1 PairProb1] = EM_HMM(datasetTrain(1).actionData, datasetTrain(1).poseData, G, ClassProb1Cluster, datasetTrain(1).InitialPairProb, maxIter);
