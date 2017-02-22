@@ -158,7 +158,7 @@ for iter=1:maxIter
     for j = 2 : m
       F(j).var = [j, j - 1]; F(j).card = [K, K]; F(j).val = transMat;
     end
-    % m+1~2*m is emission probability P(O|S) = P(Pose|State)
+    % m+1~2*m is emission probability / emission factor P(S|O) = P(State|Pose)
     for j = 1 : m
       F(m + j).var = [j]; F(m + j).card = [K];
       F(m + j).val = logEmissionProb(actionData(i).marg_ind(j), :);
